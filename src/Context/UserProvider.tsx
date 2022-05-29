@@ -6,7 +6,7 @@ const Context = createContext<User[] | null>(null);
 const useSelectorUser = () => useContext(Context);
 
 function UserProvider({ children }: Provider) {
-  const URL_RANDOM_USERS = 'https://randomuser.me/api/?results=36';
+  const URL_RANDOM_USERS = 'https://randomuser.me/api/?results=12';
   const [users, setUsers] = useState<User[] | null>(null);
 
   useEffect(() => {
@@ -15,7 +15,14 @@ function UserProvider({ children }: Provider) {
         const data = await fetch(URL_RANDOM_USERS, { method: 'GET' });
         const users: RequestUsers = await data.json();
 
-        setUsers(users.results);
+        const usersFormmated = users.results.map(user => {
+          user.name.first[0].toUpperCase();
+          user.name.last[0].toUpperCase();
+
+          return user
+        })
+
+        setUsers(usersFormmated);
       } catch (error) {
         return
       }

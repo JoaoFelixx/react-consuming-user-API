@@ -1,5 +1,12 @@
+import { UserImage } from './images';
 import { BackButton } from './buttons';
 import { MapUserById } from './maps';
-import { UserImage } from './images';
+import { ListUserCard, ListUserTable } from './lists';
 
-export { BackButton, MapUserById, UserImage };
+export { 
+	UserImage, 
+	BackButton, 
+	MapUserById, 
+	ListUserCard,
+	ListUserTable 
+};
