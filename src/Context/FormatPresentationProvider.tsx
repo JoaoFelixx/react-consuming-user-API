@@ -6,17 +6,13 @@ interface FormatPresentation {
   setFormat?: React.Dispatch<string>;
 }
 
-const defaultValues: FormatPresentation = {
-  format: 'Card'
-}
-
-const Context = createContext(defaultValues);
+const Context = createContext<FormatPresentation>({ format: 'Card' });
 
 const useSelectorFormat = () => useContext(Context);
 
-function FormatPresentationProvider ({ children }: Provider) {
-  const [format,setFormat] = useState<string>('Card')
-  
+function FormatPresentationProvider({ children }: Provider) {
+  const [format, setFormat] = useState<string>('Card')
+
   return (
     <Context.Provider value={{ format, setFormat }}>
       {children}

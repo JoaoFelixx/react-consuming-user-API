@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Table, Flex } from './style';
 import { useSelectorFilteredUsers } from 'Context/FilteredUsersProvider';
+import { localizedStrings } from 'constants/localizedStrings';
 
 export function ListUserTable() {
 	const { usersFiltered: users } = useSelectorFilteredUsers();
@@ -11,11 +12,11 @@ export function ListUserTable() {
 			<Table>
 				<tbody>
 					<tr>
-						<th>Foto</th>
-						<th>Nome</th>
-						<th>Idade</th>
-						<th>Pais</th>
-						<th>Genero</th>
+						<th>{localizedStrings.photo}</th>
+						<th>{localizedStrings.name}</th>
+						<th>{localizedStrings.age}</th>
+						<th>{localizedStrings.country}</th>
+						<th>{localizedStrings.gender}</th>
 					</tr>
 					{React.Children.toArray(
 						users && users.map((user) => {
@@ -23,7 +24,7 @@ export function ListUserTable() {
 								<tr>
 									<td>
 										<Link to={`/user/${user.login.uuid}`} >
-											<img src={user.picture.large} alt="user" /> 
+											<img src={user.picture.large} alt="user" />
 										</Link>
 									</td>
 									<td>{`${user.name.first} ${user.name.last}`}</td>
@@ -41,7 +42,7 @@ export function ListUserTable() {
 
 	return (
 		<Flex>
-			{!users?.length ? <h2>Usuário não encontrado !</h2> : <MemorizedTable /> }
+			{!users?.length ? <h2>{localizedStrings.userNotAFound}</h2> : <MemorizedTable />}
 		</Flex>
 	)
 } 

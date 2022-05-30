@@ -15,14 +15,14 @@ function UserProvider({ children }: Provider) {
         const data = await fetch(URL_RANDOM_USERS, { method: 'GET' });
         const users: RequestUsers = await data.json();
 
-        const usersFormmated = users.results.map(user => {
+        const usersFormatted = users.results.map(user => {
           user.name.first[0].toUpperCase();
           user.name.last[0].toUpperCase();
 
           return user
         })
 
-        setUsers(usersFormmated);
+        setUsers(usersFormatted);
       } catch (error) {
         return
       }

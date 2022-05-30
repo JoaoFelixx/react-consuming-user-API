@@ -1,5 +1,5 @@
-import { useParams } from "react-router-dom";
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { MapUserById, UserImage } from 'components';
 import { useSelectorUser } from 'Context/UserProvider';
 import { Flex, Container } from './style'
@@ -39,7 +39,7 @@ export function GetUserById() {
               <UserImage src={userSelected.picture.large} alt="user" />
               <h3>{userSelected.name.first}</h3>
               <span>
-                {`${userSelected.name.first} lives in ${userSelected.location.city}, ${userSelected.location.state}`}
+                {`${userSelected.name.first} mora em ${userSelected.location.city}, ${userSelected.location.state}`}
               </span>
             </Container>
           </Flex>

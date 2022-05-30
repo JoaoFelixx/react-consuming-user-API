@@ -3,13 +3,14 @@ import { Link } from 'react-router-dom';
 import { Flex, Card } from './style';
 import { UserImage } from '../../images';
 import { useSelectorFilteredUsers } from 'Context/FilteredUsersProvider';
+import { localizedStrings } from 'constants/localizedStrings';
 
 export function ListUserCard() {
 	const { usersFiltered: users } = useSelectorFilteredUsers(); 
 		
 	return (
 		<Flex>
-			{!users?.length ? <h2> Usuário não encontrado !</h2> : React.Children.toArray(
+			{!users?.length ? <h2>{localizedStrings.userNotAFound}</h2> : React.Children.toArray(
 				users.map((user) => {
 					return (
 						<Card>

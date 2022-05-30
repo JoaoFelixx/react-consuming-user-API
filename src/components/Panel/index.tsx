@@ -7,6 +7,7 @@ import {
 } from './style';
 import { useSelectorUser } from 'Context/UserProvider';
 import { useSelectorFilteredUsers } from 'Context/FilteredUsersProvider';
+import { localizedStrings } from 'constants/localizedStrings';
 
 export function Panel() {
   const users = useSelectorUser();
@@ -52,7 +53,7 @@ export function Panel() {
         <SearchBar 
           type="search" 
           list='names' 
-          placeholder="Pesquise usuário"
+          placeholder={localizedStrings.searchUser}
           value={name} 
           onChange={(event) => setName(event.target.value)} /> 
         <datalist id='names'>
@@ -69,7 +70,7 @@ export function Panel() {
       <div style={{ justifyContent: 'space-around' }}>
         <div>
           <select onChange={(event) => filterByNationality(event.target.value)}>
-            <option value="">Todos</option>
+            <option value="">{localizedStrings.all}</option>
             {React.Children.toArray(
               countries.map((country) => {
                 return (
@@ -81,16 +82,16 @@ export function Panel() {
         </div>
         <div>
           <select onChange={(event) => filterByGender(event.target.value)} >
-            <option value="">Todos</option>
-            <option value="female">Feminino</option>
-            <option value="male">Masculino</option>
+            <option value="">{localizedStrings.all}</option>
+            <option value="female">{localizedStrings.female}</option>
+            <option value="male">{localizedStrings.male}</option>
           </select>
         </div>
         <div className='check'>
           <input type="checkbox" value=""/>
-          <label>Adultos</label>
+          <label>{localizedStrings.adults}</label>
         </div>
-        <label className='list'>Lista</label>
+        <label className='list'>{localizedStrings.list}</label>
         <SwitchButton />
       </div>
     </Card>

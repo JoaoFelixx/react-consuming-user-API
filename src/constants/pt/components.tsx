@@ -1,0 +1,16 @@
+export const components = {
+  back: 'Voltar',
+  userNotAFound: 'Usuário não encontrado !',
+  photo: 'Foto',
+  name: 'Nome',
+  age: 'Idade',
+  country: 'Pais',
+  gender: 'Gênero',
+  searchUser: 'Pesquise usuário',
+  search: 'Pesquisar',
+  all: 'Todos',
+  female: 'Feminino',
+  male: 'Mascúlino',
+  list: 'Lista',
+  adults: 'Adultos',
+}
