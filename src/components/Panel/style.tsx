@@ -1,48 +1,66 @@
 import styled from 'styled-components';
 
 const Card = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
   div {
-    width: 90%;
-  	padding: 10px 0;
+    width: 40%;
+  	padding: 0.5em 0;
     display: flex;
-    justify-content: center;
     align-items: center;
+
+    @media (max-width: 768px) {
+      width: 90%;
+    }
   }
-  
-  label,
-  span,
+
   input[type="checkbox"] {
-    margin-right: 6px;
+    margin-right: 2px;
   }
-  
 
   select {
-    margin-right: 6px;
-    width: 16em;
-    height: 34px;
+    width: 9em;
+    height: 2.5em;
     overflow: hidden;
-    background: url(nova_setinha.jpg) no-repeat right #ddd; /* novo ícone para o <select> */
+    background-color: #ddd;
     border: 1px solid #ccc;
+
+    @media (max-width: 768px) {
+      width: 5em;
+    }
+  }
+
+  label.list {
+    margin-right: 4px;
+  }
+
+  div.check {
+    @media (max-width: 768px) {
+      display: none;
+    }
   }
 `; 
 
 const SearchBar = styled.input`
-  padding: 6px;
-  width: 40%;
+  width: 70%;
+  padding: 6px 10px;  
   font-size: 1.1em;
   border: none;
   background-color: rgb(235, 235, 235);
-  margin-right: 20px;
+
+  @media (max-width: 768px) {
+    width: 60%;
+    font-size: 1em;
+  }
 `;
 
 const SearchButton = styled.button`
-	background-color: #0099ff;
-	padding: 6px;  
+  background-color: #0099ff;
+	padding: 6px 10px;  
 	cursor: pointer;
 	border: none;
 	color: #fff;

@@ -3,10 +3,10 @@ import { Provider, User } from 'interfaces';
 import { useSelectorUser } from './UserProvider';
 
 interface FiltersProperties {
-	age: null | number;
-	name: null | string;
-	gender: null | string;
-	nationality?: null | string;
+	age?: number;
+	name?: string;
+	gender?: string;
+	nationality?: string;
 }
 
 interface Filters {
@@ -14,14 +14,13 @@ interface Filters {
 	usersFiltered?: User[] | null
 }
 
-const initialFilters: FiltersProperties = { age: null, gender: null, name: null, nationality: null };
 const Context = createContext<Filters>({});
 
 const useSelectorFilteredUsers = () => useContext<Filters>(Context);
 
 function FilteredUsersProvider({ children }: Provider) {
 	const users = useSelectorUser()
-	const [filters, setFilters] = useState<FiltersProperties>(initialFilters);
+	const [filters, setFilters] = useState<FiltersProperties>({});
 	const [usersFiltered, setUsersFiltered] = useState<User[] | null>(null);
 
 	const setFiltersPartially = (preferences: Partial<FiltersProperties>) => setFilters({ ...filters, ...preferences })
@@ -30,22 +29,30 @@ function FilteredUsersProvider({ children }: Provider) {
 		if (!users)
 			return
 
-		if (filters.nationality)
-			users.filter((user) => user.location.country === filters.nationality);
+		const hasValues = Object.values(filters).filter(value => value.length !== 0);
 
-		if (filters.age)
-			users.filter((user) => user.dob.age === filters.age);
+		if (!hasValues.length) {
+			setUsersFiltered(users);
+			return
+		}
 
-		if (filters.gender)
-			users.filter((user) => user.gender === filters.gender);
+		const filteredUsers = users.filter((user) => {
+			if (filters.age && user.dob.age !== filters.age) 
+				return false;
 
-		if (filters.name)
-			users.filter((user) => user.name.first === filters.name);
+			if (filters.name && user.name.first !== filters.name) 
+				return false;
 
-		if (filters.name)
-			users.filter((user) => user.name.first === filters.name);
+			if (filters.gender && user.gender !== filters.gender)
+				return false;
 
-		setUsersFiltered(users);
+			if (filters.nationality && user.location.country !== filters.nationality) 
+				return false;
+			
+			return true;
+		});
+
+		setUsersFiltered(filteredUsers);
 
 	}, [filters, users])
 

@@ -3,6 +3,10 @@ import styled from 'styled-components';
 const Flex = styled.div`
 	display: flex;
 	justify-content: center;
+
+	h3 {
+		font-weight: bold;
+	}
 `;
 
 const Table = styled.table`

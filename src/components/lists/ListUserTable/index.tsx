@@ -1,12 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Table, Flex } from './style';
 import { useSelectorFilteredUsers } from 'Context/FilteredUsersProvider';
 
 export function ListUserTable() {
 	const { usersFiltered: users } = useSelectorFilteredUsers();
 
-	return (
-		<Flex>
+	const MemorizedTable = React.memo(() => {
+		return (
 			<Table>
 				<tbody>
 					<tr>
@@ -20,7 +21,11 @@ export function ListUserTable() {
 						users && users.map((user) => {
 							return (
 								<tr>
-									<td><img src={user.picture.large} alt="user" /> </td>
+									<td>
+										<Link to={`/user/${user.login.uuid}`} >
+											<img src={user.picture.large} alt="user" /> 
+										</Link>
+									</td>
 									<td>{`${user.name.first} ${user.name.last}`}</td>
 									<td>{user.dob.age}</td>
 									<td>{user.location.country}</td>
@@ -31,6 +36,12 @@ export function ListUserTable() {
 					)}
 				</tbody>
 			</Table>
+		)
+	});
+
+	return (
+		<Flex>
+			{!users?.length ? <h2>Usuário não encontrado !</h2> : <MemorizedTable /> }
 		</Flex>
 	)
 } 

@@ -6,11 +6,11 @@ import { useSelectorFilteredUsers } from 'Context/FilteredUsersProvider';
 
 export function ListUserCard() {
 	const { usersFiltered: users } = useSelectorFilteredUsers(); 
-
+		
 	return (
 		<Flex>
-			{React.Children.toArray(
-				users && users.map((user) => {
+			{!users?.length ? <h2> Usuário não encontrado !</h2> : React.Children.toArray(
+				users.map((user) => {
 					return (
 						<Card>
 							<Link style={{ textDecoration: 'none', color: '#000' }} to={`/user/${user.login.uuid}`}>

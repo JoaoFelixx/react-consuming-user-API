@@ -7,4 +7,8 @@ export const GlobalStyle = createGlobalStyle`
 
 		font-family: 'Source Sans Pro', sans-serif;		
 	}
+
+	::-webkit-scrollbar {
+    display: none;
+  }
 `;

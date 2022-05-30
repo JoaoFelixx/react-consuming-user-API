@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MapUserById, UserImage } from 'components';
 import { useSelectorUser } from 'Context/UserProvider';
 import { Flex, Container } from './style'
@@ -28,19 +28,23 @@ export function GetUserById() {
   }, [users, id])
 
   return (
-    <div>
-      <MapUserById />
+    <React.Fragment>
       {userSelected && (
-        <Flex>
-          <Container>
-            <UserImage src={userSelected.picture.large} alt="user" />
-            <h3>{userSelected.name.first}</h3>
-            <span>
-              {`${userSelected.name.first} lives in ${userSelected.location.city}, ${userSelected.location.state}`}
-            </span>
-          </Container>
-        </Flex>
+        <div>
+        <MapUserById 
+          lat={Number(userSelected.location.coordinates.latitude)} 
+          lng={Number(userSelected.location.coordinates.longitude)} />
+          <Flex>
+            <Container>
+              <UserImage src={userSelected.picture.large} alt="user" />
+              <h3>{userSelected.name.first}</h3>
+              <span>
+                {`${userSelected.name.first} lives in ${userSelected.location.city}, ${userSelected.location.state}`}
+              </span>
+            </Container>
+          </Flex>
+        </div>
       )}
-    </div>
+    </React.Fragment>
   )
 }

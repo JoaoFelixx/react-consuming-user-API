@@ -10,6 +10,10 @@ const Flex = styled.div`
 	align-content: center;
 	transition: 1s;
 	
+	h3 {
+		font-weight: bold;
+	}
+
 	@media (max-width: 768px) {
 		flex-direction: column;
 	} 

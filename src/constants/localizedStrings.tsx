@@ -1,8 +1,5 @@
 import LocalizedStrings from "react-localization";
-
-const pt = {
-
-}
+import { pt } from './pt';
 
 const localizedStrings = new LocalizedStrings({
   pt

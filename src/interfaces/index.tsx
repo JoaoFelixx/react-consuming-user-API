@@ -13,10 +13,10 @@ interface User {
     state: string;
     postcode: string;
     country: string;
-  }
-  coordinates: {
-    latitude: string;
-    longitude: string;
+    coordinates: {
+      latitude: string;
+      longitude: string;
+    }
   }
   email: string;
   login: {

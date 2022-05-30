@@ -14,7 +14,7 @@ const Switch = styled.div`
   }
   .switch--shadow + label {
     padding: 2px;
-    width: 60px;
+    width: 54px;
     height: 30px;
     background-color: #dddddd;
     border-radius: 60px;
