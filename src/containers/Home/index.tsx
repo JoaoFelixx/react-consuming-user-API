@@ -1,10 +1,17 @@
-import { ListUserCard, ListUserTable } from 'components';
+import { useSelectorFormat } from 'Context/FormatPresentationProvider';
+import { 
+  Panel,
+  ListUserCard, 
+  ListUserTable 
+} from 'components';
 
 export function Home() {
+  const { format } = useSelectorFormat();
+
   return (
     <div>
-      <ListUserCard />
-      <ListUserTable />
+      <Panel />
+      {format === 'Card' ? <ListUserCard /> : <ListUserTable />}
     </div>
   )
 }

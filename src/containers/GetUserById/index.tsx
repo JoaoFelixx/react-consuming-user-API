@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
-import { useSelectorUser } from 'Context/UserProvider';
-import { MapUserById, UserImage } from 'components';
 import { useParams } from "react-router-dom";
-import { User } from "interfaces";
+import { useEffect, useState } from "react";
+import { MapUserById, UserImage } from 'components';
+import { useSelectorUser } from 'Context/UserProvider';
 import { Flex, Container } from './style'
+import { User } from "interfaces";
 
 export function GetUserById() {
   const { id } = useParams();

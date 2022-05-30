@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { BackButton } from '../buttons';
 
 const Map = styled.div`
   width: 100%;
@@ -9,10 +8,4 @@ const Map = styled.div`
   margin: 0;
 `;
 
-export function MapUserById() {
-  return (
-    <Map>
-      <BackButton />
-    </Map>
-  )
-}
+export { Map }

@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Button = styled.button` 
@@ -15,10 +14,4 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
-export function BackButton() {
-  return (
-    <Link to='/'>
-      <Button>Voltar</Button>
-    </Link>
-  )
-}
+export { Button, }

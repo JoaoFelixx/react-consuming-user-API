@@ -1,10 +1,15 @@
 import styled from 'styled-components';
 
+const Flex = styled.div`
+	display: flex;
+	justify-content: center;
+`;
+
 const Table = styled.table`
-	width: 100%;
+	width: 98%;
   font-weight: bold;
   border-collapse: collapse;
-  width: 100%;
+  transition: 1s;
 
 	td, th {
 	  border: 1px solid #dddddd;
@@ -18,4 +23,4 @@ const Table = styled.table`
 	}
 `;
 
-export { Table }
+export { Table, Flex }
