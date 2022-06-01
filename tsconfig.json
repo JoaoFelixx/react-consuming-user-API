@@ -25,6 +25,9 @@
     "jsx": "react-jsx"
   },
   "include": [
-    "**/*.ts"
+    "src"
   ],
+  "exclude": [
+    "cypress/**/*"
+  ]
 }
