@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { MapUserById, UserImage } from 'components';
-import { useSelectorUser } from 'Context/UserProvider';
+import { useSelectorApp } from 'Context/ApplicationProvider';
 import { Flex, Container } from './style'
 import { User } from "interfaces";
 
 export function GetUserById() {
   const { id } = useParams();
-  const users = useSelectorUser();
+  const { users } = useSelectorApp();
   const [userSelected, setUserSelected] = useState<null | User>(null);
 
   useEffect(() => {
@@ -31,9 +31,9 @@ export function GetUserById() {
     <React.Fragment>
       {userSelected && (
         <div>
-        <MapUserById 
-          lat={Number(userSelected.location.coordinates.latitude)} 
-          lng={Number(userSelected.location.coordinates.longitude)} />
+          <MapUserById
+            lat={Number(userSelected.location.coordinates.latitude)}
+            lng={Number(userSelected.location.coordinates.longitude)} />
           <Flex>
             <Container>
               <UserImage src={userSelected.picture.large} alt="user" />

@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { Provider, User } from 'interfaces';
-import { useSelectorUser } from './UserProvider';
+import { useSelectorApp } from './ApplicationProvider';
 
 interface FiltersProperties {
 	age?: number;
@@ -19,7 +19,7 @@ const Context = createContext<Filters>({});
 const useSelectorFilteredUsers = () => useContext<Filters>(Context);
 
 function FilteredUsersProvider({ children }: Provider) {
-	const users = useSelectorUser()
+	const { users } = useSelectorApp()
 	const [filters, setFilters] = useState<FiltersProperties>({});
 	const [usersFiltered, setUsersFiltered] = useState<User[] | null>(null);
 
@@ -37,18 +37,18 @@ function FilteredUsersProvider({ children }: Provider) {
 		}
 
 		const filteredUsers = users.filter((user) => {
-			if (filters.age && user.dob.age !== filters.age) 
+			if (filters.age && user.dob.age !== filters.age)
 				return false;
 
-			if (filters.name && user.name.first !== filters.name) 
+			if (filters.name && user.name.first !== filters.name)
 				return false;
 
 			if (filters.gender && user.gender !== filters.gender)
 				return false;
 
-			if (filters.nationality && user.location.country !== filters.nationality) 
+			if (filters.nationality && user.location.country !== filters.nationality)
 				return false;
-			
+
 			return true;
 		});
 

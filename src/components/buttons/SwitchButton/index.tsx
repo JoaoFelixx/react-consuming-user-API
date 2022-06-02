@@ -1,10 +1,10 @@
 import { Switch } from './style';
-import { useSelectorFormat } from 'Context/FormatPresentationProvider';
+import { useSelectorApp } from 'Context/ApplicationProvider';
 
 export function SwitchButton() {
-  const { format, setFormat } = useSelectorFormat();
+  const { formatList, setFormatList } = useSelectorApp();
 
-  const changeFormat = () => setFormat?.(format === 'Card' ? 'Table' : 'Card');
+  const changeFormat = () => setFormatList?.(formatList === 'Card' ? 'Table' : 'Card');
 
   return (
     <Switch className="switch__container">

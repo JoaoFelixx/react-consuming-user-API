@@ -1,22 +1,16 @@
 import Routes from 'Router';
-import { UserProvider } from 'Context/UserProvider';
+import { ApplicationProvider } from 'Context/ApplicationProvider';
 import { FilteredUsersProvider } from 'Context/FilteredUsersProvider';
-import { FormatPresentationProvider } from 'Context/FormatPresentationProvider';
-import { IconContext } from 'react-icons';
 import { GlobalStyle } from 'styles';
 
 function App() {
   return (
-    <UserProvider>
+    <ApplicationProvider>
       <FilteredUsersProvider>
-        <FormatPresentationProvider>
-          <IconContext.Provider value={{ color: '#0099ff', size: '2em' }}>
-            <GlobalStyle />
-            <Routes />
-          </IconContext.Provider>
-        </FormatPresentationProvider>
+        <GlobalStyle />
+        <Routes />
       </FilteredUsersProvider>
-    </UserProvider>
+    </ApplicationProvider>
   );
 }
 

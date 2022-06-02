@@ -1,4 +1,4 @@
-import { useSelectorFormat } from 'Context/FormatPresentationProvider';
+import { useSelectorApp } from 'Context/ApplicationProvider';
 import { 
   Panel,
   ListUserCard, 
@@ -6,12 +6,12 @@ import {
 } from 'components';
 
 export function Home() {
-  const { format } = useSelectorFormat();
+  const { formatList } = useSelectorApp();
 
   return (
     <div>
       <Panel />
-      {format === 'Card' ? <ListUserCard /> : <ListUserTable />}
+      {formatList === 'Card' ? <ListUserCard /> : <ListUserTable />}
     </div>
   )
 }

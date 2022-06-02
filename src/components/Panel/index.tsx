@@ -5,12 +5,12 @@ import {
   SearchBar, 
   SearchButton 
 } from './style';
-import { useSelectorUser } from 'Context/UserProvider';
+import { useSelectorApp } from 'Context/ApplicationProvider';
 import { useSelectorFilteredUsers } from 'Context/FilteredUsersProvider';
 import { localizedStrings } from 'constants/localizedStrings';
 
 export function Panel() {
-  const users = useSelectorUser();
+  const { users } = useSelectorApp();
   const { setFilters } = useSelectorFilteredUsers();
   const [name, setName] = useState<string>('');
   const [countries, setCountries] = useState<string[]>(['']);
