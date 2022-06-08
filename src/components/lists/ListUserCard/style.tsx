@@ -8,7 +8,6 @@ const Flex = styled.div`
 	justify-content: center;
 	align-items: center;
 	align-content: center;
-	transition: 1s;
 	
 	h3 {
 		font-weight: bold;
@@ -24,7 +23,7 @@ const Card = styled.div`
 	flex-direction: column;
 	align-items:center;
 	margin-bottom: 20px;
-	flex-basis: 14em;
+	flex-basis: 13em;
 
 	h3 {
 		position: relative;

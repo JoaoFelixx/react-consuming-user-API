@@ -5,16 +5,18 @@ import { environments } from 'constants/environments';
 interface Application {
   users?: User[],
   formatList: string;
+  isLoading: boolean;
   setFormatList?: React.Dispatch<string>;
 }
 
-const Context = createContext<Application>({ formatList: 'Card' });
+const Context = createContext<Application>({ formatList: 'Card', isLoading: true });
 
 const useSelectorApp = () => useContext(Context);
 
 function ApplicationProvider({ children }: Provider) {
   const [users, setUsers] = useState<User[] | undefined>(undefined);
-  const [formatList, setFormatList] = useState<string>('Card')
+  const [formatList, setFormatList] = useState<string>('Card');
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
     (async () => {
@@ -32,12 +34,14 @@ function ApplicationProvider({ children }: Provider) {
         setUsers(usersFormatted);
       } catch (error) {
         return
-      }
+      } finally {
+        setIsLoading(false)
+      } 
     })()
   }, [])
 
   return (
-    <Context.Provider value={{ users, formatList, setFormatList }} >
+    <Context.Provider value={{ users, formatList, setFormatList, isLoading }} >
       {children}
     </Context.Provider>
   )

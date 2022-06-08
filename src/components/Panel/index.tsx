@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { SwitchButton } from '../buttons';
-import { 
-  Card, 
-  SearchBar, 
-  SearchButton 
-} from './style';
+import { Card, SearchBar, SearchButton, Container } from './style';
 import { useSelectorApp } from 'Context/ApplicationProvider';
 import { useSelectorFilteredUsers } from 'Context/FilteredUsersProvider';
 import { localizedStrings } from 'constants/localizedStrings';
@@ -19,43 +15,43 @@ export function Panel() {
     if (name.length === 0)
       setFilters?.({ name: undefined });
 
-    setFilters?.({ name });      
-  } 
+    setFilters?.({ name });
+  }
 
   const filterByGender = (gender: string) => {
     if (gender.length === 0)
       setFilters?.({ gender: undefined });
 
-    setFilters?.({ gender });  
+    setFilters?.({ gender });
   }
 
   const filterByNationality = (nationality: string) => {
     if (nationality.length === 0)
       setFilters?.({ nationality: undefined });
 
-    setFilters?.({ nationality });  
+    setFilters?.({ nationality });
   }
 
   useEffect(() => {
     if (!users)
       return
 
-    const allCountries: string[] = users.map((user) => user.location.country); 
-     
+    const allCountries: string[] = users.map((user) => user.location.country);
+
     const filteredCountries = [...new Set(allCountries)];
 
     setCountries(filteredCountries);
   }, [users])
 
   return (
-    <Card>
-      <div style={{ justifyContent: 'space-between' }}>
-        <SearchBar 
-          type="search" 
-          list='names' 
+    <Container>
+      <Card style={{ justifyContent: 'space-between' }}>
+        <SearchBar
+          type="search"
+          list='names'
           placeholder={localizedStrings.searchUser}
-          value={name} 
-          onChange={(event) => setName(event.target.value)} /> 
+          value={name}
+          onChange={(event) => setName(event.target.value)} />
         <datalist id='names'>
           {React.Children.toArray(
             users && users.map(user => {
@@ -65,9 +61,9 @@ export function Panel() {
             })
           )}
         </datalist>
-        <SearchButton onClick={filterByName}>Pesquisar</SearchButton>
-      </div>
-      <div style={{ justifyContent: 'space-around' }}>
+        <SearchButton onClick={filterByName}>{localizedStrings.search}</SearchButton>
+      </Card>
+      <Card style={{ justifyContent: 'space-between' }}>
         <div>
           <select onChange={(event) => filterByNationality(event.target.value)}>
             <option value="">{localizedStrings.all}</option>
@@ -87,13 +83,11 @@ export function Panel() {
             <option value="male">{localizedStrings.male}</option>
           </select>
         </div>
-        <div className='check'>
-          <input type="checkbox" value=""/>
-          <label>{localizedStrings.adults}</label>
+        <div className="switch" >
+          <label className='list'>{localizedStrings.list}</label>
+          <SwitchButton />
         </div>
-        <label className='list'>{localizedStrings.list}</label>
-        <SwitchButton />
-      </div>
-    </Card>
+      </Card>
+    </Container>
   )
 }

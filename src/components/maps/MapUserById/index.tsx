@@ -1,8 +1,8 @@
 import { useCallback, useState } from 'react';
 import { Map } from './style';
 import { BackButton } from '../../buttons';
-import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
 import { environments } from 'constants/environments';
+import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
 
 interface Geolocation {
   lat: number;

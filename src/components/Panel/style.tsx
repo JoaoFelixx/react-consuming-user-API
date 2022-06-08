@@ -1,36 +1,24 @@
 import styled from 'styled-components';
 
-const Card = styled.div`
+const Container = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  div {
-    width: 40%;
-  	padding: 0.5em 0;
-    display: flex;
-    align-items: center;
-
-    @media (max-width: 768px) {
-      width: 90%;
-    }
-  }
-
-  input[type="checkbox"] {
-    margin-right: 2px;
-  }
+  background-color: #777777;
+  border-bottom: 2px solid #000;
 
   select {
-    width: 9em;
+    width: 8em;
+    font-size: 1em; 
     height: 2.5em;
     overflow: hidden;
     background-color: #ddd;
     border: 1px solid #ccc;
 
     @media (max-width: 768px) {
-      width: 5em;
+      width: 10em;
     }
   }
 
@@ -38,12 +26,27 @@ const Card = styled.div`
     margin-right: 4px;
   }
 
-  div.check {
+  div.switch {
+    display: flex;
+    align-items: center;
+
     @media (max-width: 768px) {
       display: none;
     }
   }
 `; 
+
+const Card = styled.div`
+  width: 40%;
+  padding: 0.5em 0;
+  display: flex;
+  align-items: center;
+  background-color: #777777;
+
+  @media (max-width: 768px) {
+    width: 90%;
+  }
+`;
 
 const SearchBar = styled.input`
   width: 70%;
@@ -59,6 +62,7 @@ const SearchBar = styled.input`
 `;
 
 const SearchButton = styled.button`
+  width: 30%;
   background-color: #0099ff;
 	padding: 6px 10px;  
 	cursor: pointer;
@@ -68,5 +72,4 @@ const SearchButton = styled.button`
 	font-size: 1.1em;
 `;
 
-
-export { Card, SearchBar, SearchButton };
+export { Container, Card, SearchBar, SearchButton };
